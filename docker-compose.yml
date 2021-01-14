@@ -1,0 +1,13 @@
+version: "3"
+
+services:
+  coding:
+    image: archlinux:base-20210110.0.13332
+    volumes:
+      - ./:/my-arch-linux
+      - my-arch-linux-cargo-data-volume:/usr/local/cargo
+    tty: true
+
+volumes:
+ my-arch-linux-cargo-data-volume:
+   external: true
