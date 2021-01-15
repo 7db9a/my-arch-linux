@@ -1,13 +1,67 @@
 version: "3"
 
 services:
-  coding:
+  system:
     image: archlinux:base-20210110.0.13332
     volumes:
-      - ./:/my-arch-linux
-      - my-arch-linux-cargo-data-volume:/usr/local/cargo
+      - my-arch-bin-data-volume:/bin
+      ## Sould be be built into the image
+      #- my-arch-boot-data-volume:/boot
+      ## Device files that persist that include tmpfs.
+      #- my-arch-dev-data-volume:/dev
+      - my-arch-etc-data-volume:/etc
+      - my-arch-home-data-volume:/home
+      - ./:/home/mounted-my-arch-linux
+      - my-arch-lib-data-volume:/lib
+      - my-arch-lib64-data-volume:/lib64
+      ## Processs mount and are listed here
+      #- my-arch-mnt-data-volume:/mnt
+      - my-arch-opt-data-volume:/opt
+      - my-arch-root-data-volume:/root
+      ## tmpfs stored in RAM not drive
+      #- my-arch-run-data-volume:/run
+      - my-arch-sbin-data-volume:/sbin
+      - my-arch-srv-data-volume:/srv
+      ## CANNOT USE DOCKER EXEC WITH /sys MOUNTED.
+      #- my-arch-sys-data-volume:/sys
+      #- my-arch-tmp-data-volume:/tmp
+      - my-arch-usr-data-volume:/usr
+      ## Cached data: okay to mount.
+      - my-arch-var-data-volume:/var
     tty: true
 
 volumes:
- my-arch-linux-cargo-data-volume:
+ my-arch-bin-data-volume:
    external: true
+# my-arch-boot-data-volume:
+#   external: true
+# my-arch-dev-data-volume:
+#   external: true
+ my-arch-etc-data-volume:
+   external: true
+ my-arch-home-data-volume:
+   external: true
+ my-arch-lib-data-volume:
+   external: true
+ my-arch-lib64-data-volume:
+   external: true
+# my-arch-mnt-data-volume:
+#   external: true
+ my-arch-opt-data-volume:
+   external: true
+ my-arch-root-data-volume:
+   external: true
+## my-arch-run-data-volume:
+##   external: true
+ my-arch-sbin-data-volume:
+   external: true
+ my-arch-srv-data-volume:
+   external: true
+#   my-arch-sys-data-volume:
+#   external: true
+# my-arch-tmp-data-volume:
+#   external: true
+ my-arch-usr-data-volume:
+   external: true
+ my-arch-var-data-volume:
+  external: true
