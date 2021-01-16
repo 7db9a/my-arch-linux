@@ -1,5 +1,8 @@
 ## Setup
 
+**Create volumes**
+
+```
 docker volume create --name=my-arch-bin-data-volume && \
 docker volume create --name=my-arch-boot-data-volume && \
 docker volume create --name=my-arch-dev-data-volume && \
@@ -17,3 +20,10 @@ docker volume create --name=my-arch-sys-data-volume && \
 docker volume create --name=my-arch-tmp-data-volume && \
 docker volume create --name=my-arch-usr-data-volume && \
 docker volume create --name=my-arch-var-data-volume
+```
+
+**Then build and run**
+
+`docker-compose up --detach`
+
+`docker exec -it my-arch-linux_system_1 bash`
